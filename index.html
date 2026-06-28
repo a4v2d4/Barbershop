@@ -89,7 +89,6 @@
     color: #d4b46a;
   }
   .eyebrow .address-link {
-    color: var(--muted);
     transition: color 0.2s;
   }
   .eyebrow .address-link:hover {
@@ -383,7 +382,7 @@
     
     <p class="eyebrow">
       <a href="tel:7077958099">(707) 795-8099</a> 
-      <span style="color:#3a3020;">·</span> 
+      <span class="separator" style="color:#3a3020;">·</span> 
       <a href="https://www.google.com/maps/place/8099+La+Plaza+Suite+J,+Cotati,+CA+94931" 
          target="_blank" 
          rel="noopener" 
@@ -391,6 +390,16 @@
     </p>
     
     <p class="tagline">A full-service barbershop where Sonoma County's <em>men</em>, <em>women</em>, and <em>children</em> have come for <em>30+ years.</em></p>
+
+    <!-- Google review badge -->
+    <div>
+      <a class="review-badge"
+         href="https://www.google.com/maps/place/Cotati+Barbershop"
+         target="_blank" rel="noopener" aria-label="4.7 stars on Google — 100+ reviews">
+        <span class="stars">★★★★<span style="position:relative;display:inline-block;color:#2e2e2e;">★<span style="position:absolute;left:0;top:0;width:70%;overflow:hidden;color:var(--brass);">★</span></span></span>
+        <span class="review-text"><strong>4.7</strong> on Google &nbsp;·&nbsp; 100+ reviews</span>
+      </a>
+    </div>
 
     <!-- Hours block -->
     <div class="hours-block" role="complementary" aria-label="Business hours">
@@ -405,15 +414,6 @@
       <div class="hours-closed-note">Closed<br>Sun &amp; Mon</div>
     </div>
 
-    <!-- Google review badge -->
-    <div>
-      <a class="review-badge"
-         href="https://www.google.com/maps/place/Cotati+Barbershop"
-         target="_blank" rel="noopener" aria-label="4.7 stars on Google — 100+ reviews">
-        <span class="stars">★★★★<span style="position:relative;display:inline-block;color:#2e2e2e;">★<span style="position:absolute;left:0;top:0;width:70%;overflow:hidden;color:var(--brass);">★</span></span></span>
-        <span class="review-text"><strong>4.7</strong> on Google &nbsp;·&nbsp; 100+ reviews</span>
-      </a>
-    </div>
   </header>
   
   <!-- Tabs -->
