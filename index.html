@@ -340,6 +340,33 @@
   }
   .cta:hover { opacity: 0.88; }
 
+  .map-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 75%;           /* 4:3 aspect ratio (good for maps) */
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px;            /* optional: nice rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* optional: subtle depth */
+  margin: 1.5rem 0;
+}
+
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Optional: Make it a bit taller on larger screens */
+@media (min-width: 768px) {
+  .map-container {
+    padding-bottom: 65%;         /* slightly wider feel on desktop */
+  }
+}
+
   /* ── Sticky mobile call button ── */
   .mobile-cta {
     display: none;
@@ -574,21 +601,23 @@
     <section class="contact-section">
       <p class="section-label">Find Us</p>
       <p class="contact-name">Cotati Barbershop</p>
+      
       <div class="contact-items">
         <p class="contact-item">8099 La Plaza, Suite J &nbsp;·&nbsp; Cotati, CA 94931</p>
         <p class="contact-item"><a href="tel:7077958099">(707) 795-8099</a></p>
         <p class="contact-item"><a href="mailto:cotatibarbershop@yahoo.com">cotatibarbershop@yahoo.com</a></p>
       </div>
 
-      <iframe
-        class="map-embed"
-        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY&q=Cotati+Barbershop,8099+La+Plaza+Suite+J+Cotati+CA"
-        width="100%"
-        height="280"
-        allowfullscreen loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Cotati Barbershop location map">
-      </iframe>
+      <!-- Responsive Google Maps Container -->
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3129.9416467754104!2d-122.7077247!3d38.3271821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80844a87f1cafae5%3A0xf5e77965a36f4854!2sCotati%20Barbershop!5e0!3m2!1sen!2sus!4v1782689345715!5m2!1sen!2sus"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
+      </div>
 
       <a class="cta" href="tel:7077958099">Call to Book &nbsp; (707) 795-8099</a>
     </section>
