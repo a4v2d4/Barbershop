@@ -9,6 +9,10 @@
 <meta property="og:type" content="website">
 <title>Cotati Barbershop — Est. 30+ Years</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Scissors favicon (SVG inline as data URI) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231C1C1C'/%3E%3Cg stroke='%23B8963E' stroke-width='1.8' stroke-linecap='round' fill='none'%3E%3Ccircle cx='10' cy='22' r='3.5'/%3E%3Ccircle cx='22' cy='22' r='3.5'/%3E%3Cline x1='12.5' y1='19.5' x2='16' y2='10'/%3E%3Cline x1='19.5' y1='19.5' x2='16' y2='10'/%3E%3Cline x1='9' y1='9' x2='23' y2='9'/%3E%3C/g%3E%3C/svg%3E">
+
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -16,7 +20,6 @@
     --brass: #B8963E;
     --charcoal: #1C1C1C;
     --cream: #F5F0E8;
-    --brick: #8B4A3C;
     --mid: #2E2E2E;
     --muted: #a09888;
     --dim: #6a6055;
@@ -31,6 +34,8 @@
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     line-height: 1.7;
+    /* room for sticky mobile CTA */
+    padding-bottom: 0;
   }
 
   .site {
@@ -38,30 +43,20 @@
     margin: 0 auto;
   }
 
-  /* ── Barbershop Pole ── */
+  /* ── Pole ── */
   .pole-wrap {
     display: flex;
     justify-content: center;
     padding: 2.5rem 0 0.75rem;
   }
   .pole {
-    width: 22px;
-    height: 90px;
-    border-radius: 11px;
-    overflow: hidden;
-    position: relative;
-    border: 2px solid #555;
+    width: 22px; height: 90px;
+    border-radius: 11px; overflow: hidden;
+    position: relative; border: 2px solid #555;
   }
-  .pole-bg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: var(--cream);
-  }
+  .pole-bg { position: absolute; width: 100%; height: 100%; background: var(--cream); }
   .pole-stripe {
-    position: absolute;
-    width: 100%;
-    height: 12px;
+    position: absolute; width: 100%; height: 12px;
     background: var(--brass);
     animation: spin 4s linear infinite;
   }
@@ -69,13 +64,8 @@
   .pole-stripe:nth-child(3) { top: 14px; }
   .pole-stripe:nth-child(4) { top: 40px; }
   .pole-stripe:nth-child(5) { top: 66px; }
-  @keyframes spin {
-    0%   { transform: translateY(0); }
-    100% { transform: translateY(26px); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .pole-stripe { animation: none; }
-  }
+  @keyframes spin { 0% { transform: translateY(0); } 100% { transform: translateY(26px); } }
+  @media (prefers-reduced-motion: reduce) { .pole-stripe { animation: none; } }
 
   /* ── Hero ── */
   .hero {
@@ -83,96 +73,125 @@
     padding: 1.5rem 2rem 2.5rem;
   }
   .eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--brass);
+    font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--brass);
     margin-bottom: 1rem;
   }
   .hero h1 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2.2rem, 7vw, 3.6rem);
-    font-weight: 700;
-    line-height: 1.15;
+    font-weight: 700; line-height: 1.15;
     margin-bottom: 0.75rem;
   }
-  .hero h1 em {
-    font-style: italic;
-    color: var(--brass);
-  }
+  .hero h1 em { font-style: italic; color: var(--brass); }
   .tagline {
-    color: var(--muted);
-    font-size: 15px;
-    max-width: 360px;
-    margin: 0 auto 2rem;
+    color: var(--muted); font-size: 15px;
+    max-width: 400px; margin: 0 auto 1.5rem;
   }
-  .hero-badges {
+
+  /* ── Phone in hero ── */
+  .hero-phone {
+    margin-bottom: 1.25rem;
+  }
+  .hero-phone a {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    color: var(--brass);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .hero-phone a:hover { text-decoration: underline; }
+
+  /* ── Stars / review badge ── */
+  .review-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #1f1c14;
+    border: 1px solid #3a3020;
+    border-radius: 2px;
+    padding: 7px 16px;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+    transition: border-color 0.15s;
+  }
+  .review-badge:hover { border-color: var(--brass); }
+  .stars { color: var(--brass); font-size: 14px; letter-spacing: 1px; }
+  .review-text { font-size: 13px; color: var(--muted); }
+  .review-text strong { color: var(--cream); }
+
+  /* ── Hours strip (replaces badges) ── */
+  .hours-strip {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
     flex-wrap: wrap;
-  }
-  .badge {
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--brass);
-    border: 1px solid #3a3020;
-    padding: 6px 16px;
+    gap: 0;
+    border: 1px solid #2e2e2e;
     border-radius: 2px;
+    overflow: hidden;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+  .hours-cell {
+    flex: 1;
+    min-width: 130px;
+    padding: 0.6rem 1rem;
+    border-right: 1px solid #2e2e2e;
+    text-align: left;
+  }
+  .hours-cell:last-child { border-right: none; }
+  .hours-cell-label {
+    font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--brass);
+    display: block; margin-bottom: 1px;
+  }
+  .hours-cell-time {
+    font-size: 13px; color: var(--muted);
+  }
+  .hours-closed {
+    flex-basis: 100%;
+    padding: 0.45rem 1rem;
+    font-size: 11px;
+    color: var(--dim);
+    border-top: 1px solid #2e2e2e;
+    text-align: center;
+    letter-spacing: 0.05em;
   }
 
   /* ── Divider ── */
   .divider {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 0 2rem;
-    margin: 0.5rem 0;
+    display: flex; align-items: center;
+    gap: 1rem; padding: 0 2rem; margin: 0.5rem 0;
   }
   .divider-line { flex: 1; height: 1px; background: #2e2e2e; }
   .divider-diamond {
-    width: 6px; height: 6px;
-    background: var(--brass);
-    transform: rotate(45deg);
-    flex-shrink: 0;
+    width: 6px; height: 6px; background: var(--brass);
+    transform: rotate(45deg); flex-shrink: 0;
   }
 
-  /* ── Nav Tabs ── */
+  /* ── Tab Nav ── */
   .tab-nav {
     display: flex;
     border-bottom: 1px solid #2e2e2e;
     background: var(--dark);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    overflow-x: auto;
-    scrollbar-width: none;
+    position: sticky; top: 0; z-index: 100;
+    overflow-x: auto; scrollbar-width: none;
   }
   .tab-nav::-webkit-scrollbar { display: none; }
-
   .tab-btn {
-    flex: 1;
-    min-width: 80px;
-    background: none;
-    border: none;
+    flex: 1; min-width: 80px;
+    background: none; border: none;
     border-bottom: 2px solid transparent;
     color: var(--dim);
     font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 1rem 0.5rem;
-    cursor: pointer;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 1rem 0.5rem; cursor: pointer;
     transition: color 0.15s, border-color 0.15s;
     white-space: nowrap;
   }
   .tab-btn:hover { color: var(--muted); }
-  .tab-btn.active {
-    color: var(--brass);
-    border-bottom-color: var(--brass);
-  }
+  .tab-btn.active { color: var(--brass); border-bottom-color: var(--brass); }
 
   /* ── Tab Panels ── */
   .tab-panel { display: none; }
@@ -180,307 +199,133 @@
 
   /* ── Section Label ── */
   .section-label {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--brass);
+    font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--brass);
     margin-bottom: 1.25rem;
   }
 
-  /* ══ BARBERS PANEL ══ */
+  /* ══ BARBERS ══ */
   .barbers-section { padding: 2.5rem 2rem; }
-
   .barbers-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: #2a2a2a;
-    margin-bottom: 2rem;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: #2a2a2a; margin-bottom: 2rem;
   }
-  .barber-card {
-    background: var(--charcoal);
-    padding: 1.4rem 1.25rem;
-  }
+  .barber-card { background: var(--charcoal); padding: 1.4rem 1.25rem; }
   .barber-name {
     font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--cream);
-    margin-bottom: 0.2rem;
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--cream); margin-bottom: 0.2rem;
   }
   .barber-role {
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--brass);
+    font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--brass);
     margin-bottom: 0.75rem;
   }
-  .barber-days {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-  }
+  .barber-days { display: flex; flex-wrap: wrap; gap: 5px; }
   .day-pill {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--dim);
-    border: 1px solid #2e2e2e;
-    padding: 3px 8px;
-    border-radius: 2px;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--dim); border: 1px solid #2e2e2e;
+    padding: 3px 8px; border-radius: 2px;
   }
-  .day-pill.on {
-    color: var(--cream);
-    border-color: #3a3020;
-    background: #232010;
-  }
+  .day-pill.on { color: var(--cream); border-color: #3a3020; background: #232010; }
 
-  .specialties-block {
-    border-top: 1px solid #2a2a2a;
-    padding-top: 1.5rem;
-  }
-  .specialties-block p {
+  .specialties-block { border-top: 1px solid #2a2a2a; padding-top: 1.5rem; }
+  .specialties-block > p {
     font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 1.05rem;
-    color: #c8bfb0;
-    line-height: 1.65;
-    margin-bottom: 1.25rem;
+    font-style: italic; font-size: 1.05rem;
+    color: #c8bfb0; line-height: 1.65; margin-bottom: 1.25rem;
   }
-  .specialty-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
+  .specialty-tags { display: flex; flex-wrap: wrap; gap: 8px; }
   .specialty-tag {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    border: 1px solid #2a2a2a;
-    padding: 5px 12px;
-    border-radius: 2px;
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); border: 1px solid #2a2a2a; padding: 5px 12px; border-radius: 2px;
   }
 
-  /* ══ SERVICES PANEL ══ */
-  .services-section {
-    padding: 2.5rem 2rem;
-    background: var(--dark);
-  }
+  /* ══ SERVICES ══ */
+  .services-section { padding: 2.5rem 2rem; background: var(--dark); }
   .services-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: #2a2a2a;
-    margin-bottom: 2rem;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: #2a2a2a; margin-bottom: 2rem;
   }
-  .service-item {
-    background: var(--dark);
-    padding: 1.25rem 1rem;
-  }
-  .service-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 1rem;
-  }
-  .service-item h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--cream);
-  }
-  .service-item p {
-    font-size: 13px;
-    color: var(--dim);
-    margin-top: 2px;
-  }
-  .price {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    color: var(--brass);
-    font-style: italic;
-    white-space: nowrap;
-  }
-
-  .services-photo {
-    width: 100%;
-    display: block;
-    border-top: 1px solid #2a2a2a;
-  }
-  .services-photo img {
-    width: 100%;
-    display: block;
-    filter: sepia(20%) contrast(1.05);
-  }
+  .service-item { background: var(--dark); padding: 1.25rem 1rem; }
+  .service-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+  .service-item h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400; color: var(--cream); }
+  .service-item p { font-size: 13px; color: var(--dim); margin-top: 2px; }
+  .price { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--brass); font-style: italic; white-space: nowrap; }
+  .services-photo { width: 100%; display: block; border-top: 1px solid #2a2a2a; }
+  .services-photo img { width: 100%; display: block; filter: sepia(20%) contrast(1.05); }
   .photo-caption {
-    text-align: center;
-    font-size: 12px;
-    color: var(--dim);
-    padding: 0.75rem 1rem;
-    background: var(--dark);
-    border-bottom: 1px solid #2a2a2a;
-    font-style: italic;
+    text-align: center; font-size: 12px; color: var(--dim);
+    padding: 0.75rem 1rem; background: var(--dark);
+    border-bottom: 1px solid #2a2a2a; font-style: italic;
   }
 
-  /* ══ ABOUT PANEL ══ */
+  /* ══ ABOUT ══ */
   .about-section { padding: 2.5rem 2rem; }
-
   .about-lead {
     font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    font-style: italic;
-    line-height: 1.65;
-    color: #c8bfb0;
-    margin-bottom: 2rem;
+    font-size: 1.2rem; font-style: italic;
+    line-height: 1.65; color: #c8bfb0; margin-bottom: 2rem;
   }
-
-  .about-features {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-bottom: 2rem;
-    border-top: 1px solid #2a2a2a;
-  }
-  .about-feature {
-    display: flex;
-    gap: 1.25rem;
-    align-items: flex-start;
-    padding: 1.25rem 0;
-    border-bottom: 1px solid #2a2a2a;
-  }
-  .feature-icon {
-    width: 32px;
-    height: 32px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--brass);
-    font-size: 18px;
-    margin-top: 2px;
-  }
-  .feature-text h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--cream);
-    margin-bottom: 0.25rem;
-  }
-  .feature-text p {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.55;
-  }
-
-  .about-stats {
-    display: flex;
-    gap: 2.5rem;
-    flex-wrap: wrap;
-    padding-top: 1.5rem;
-    border-top: 1px solid #2a2a2a;
-  }
-  .about-stat strong {
-    display: block;
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--brass);
-    line-height: 1;
-    margin-bottom: 0.25rem;
-  }
+  .about-features { display: flex; flex-direction: column; gap: 0; margin-bottom: 2rem; border-top: 1px solid #2a2a2a; }
+  .about-feature { display: flex; gap: 1.25rem; align-items: flex-start; padding: 1.25rem 0; border-bottom: 1px solid #2a2a2a; }
+  .feature-icon { width: 32px; height: 32px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-top: 2px; }
+  .feature-text h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--cream); margin-bottom: 0.25rem; }
+  .feature-text p { font-size: 14px; color: var(--muted); line-height: 1.55; }
+  .about-stats { display: flex; gap: 2.5rem; flex-wrap: wrap; padding-top: 1.5rem; border-top: 1px solid #2a2a2a; }
+  .about-stat strong { display: block; font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--brass); line-height: 1; margin-bottom: 0.25rem; }
   .about-stat span { font-size: 13px; color: var(--dim); }
 
-  /* ══ CONTACT PANEL ══ */
-  .contact-section {
-    padding: 2.5rem 2rem 3rem;
-    background: var(--dark);
-    text-align: center;
-  }
-  .contact-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-  .contact-items {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    align-items: center;
-    margin-bottom: 1.75rem;
-  }
+  /* ══ CONTACT ══ */
+  .contact-section { padding: 2.5rem 2rem 3rem; background: var(--dark); text-align: center; }
+  .contact-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 1.5rem; }
+  .contact-items { display: flex; flex-direction: column; gap: 0.75rem; align-items: center; margin-bottom: 2rem; }
   .contact-item { font-size: 15px; color: var(--muted); }
   .contact-item a { color: var(--brass); text-decoration: none; }
   .contact-item a:hover { text-decoration: underline; }
-
-  .contact-hours-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: #2a2a2a;
-    text-align: left;
-    margin-bottom: 2rem;
-  }
-  .contact-hours-cell {
-    background: var(--dark);
-    padding: 1rem 1.25rem;
-  }
-  .contact-hours-cell h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--cream);
-    margin-bottom: 0.15rem;
-  }
-  .contact-hours-cell p { font-size: 14px; color: var(--muted); }
-  .contact-hours-note {
-    font-size: 13px;
-    color: var(--dim);
-    margin-bottom: 2rem;
-    padding: 0 1rem;
-  }
-
-  .map-embed {
-    width: 100%;
-    border: 0;
-    display: block;
-    margin-bottom: 2rem;
-    filter: grayscale(30%) contrast(1.05);
-  }
-
+  .map-embed { width: 100%; border: 0; display: block; margin-bottom: 2rem; filter: grayscale(30%) contrast(1.05); }
   .cta {
-    display: inline-block;
-    background: var(--brass);
-    color: var(--charcoal);
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 13px 36px;
-    border-radius: 2px;
-    text-decoration: none;
+    display: inline-block; background: var(--brass); color: var(--charcoal);
+    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 13px 36px; border-radius: 2px; text-decoration: none;
     transition: opacity 0.15s;
   }
   .cta:hover { opacity: 0.88; }
 
+  /* ── Sticky mobile call button ── */
+  .mobile-cta {
+    display: none;
+    position: fixed; bottom: 0; left: 0; right: 0;
+    z-index: 200;
+    background: var(--brass);
+    color: var(--charcoal);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    text-align: center; text-decoration: none;
+    padding: 1rem;
+    border-top: 2px solid #8a6e2a;
+  }
+  @media (max-width: 600px) {
+    .mobile-cta { display: block; }
+    body { padding-bottom: 56px; } /* prevent content hiding behind CTA */
+  }
+
   /* ── Footer ── */
   .footer {
-    padding: 1.5rem 2rem;
-    text-align: center;
-    font-size: 12px;
-    color: #3a3530;
-    border-top: 1px solid #2a2a2a;
+    padding: 1.5rem 2rem; text-align: center;
+    font-size: 12px; color: #3a3530; border-top: 1px solid #2a2a2a;
   }
 
   /* ── Mobile ── */
   @media (max-width: 480px) {
     .barbers-grid { grid-template-columns: 1fr; }
     .services-grid { grid-template-columns: 1fr; }
-    .contact-hours-grid { grid-template-columns: 1fr; }
     .about-stats { gap: 1.5rem; }
     .tab-btn { font-size: 10px; padding: 0.85rem 0.35rem; }
+    .hours-cell { min-width: 100px; }
   }
 </style>
 </head>
@@ -502,11 +347,32 @@
   <header class="hero">
     <p class="eyebrow">Est. 30+ Years &nbsp;·&nbsp; Cotati, California</p>
     <h1>Cotati's<br><em>Finest</em> Barbershop</h1>
-    <p class="tagline">A full-service barbershop where Sonoma County has come for generations.</p>
-    <div class="hero-badges">
-      <span class="badge">Men</span>
-      <span class="badge">Women</span>
-      <span class="badge">Children</span>
+    <p class="tagline">A full-service barbershop where Sonoma County's men, women, and children have come for generations.</p>
+
+    <!-- Phone -->
+    <div class="hero-phone">
+      <a href="tel:7077958099">(707) 795-8099</a>
+    </div>
+
+    <!-- Google review badge -->
+    <a class="review-badge"
+       href="https://www.google.com/maps/place/Cotati+Barbershop+Reviews"
+       target="_blank" rel="noopener" aria-label="4.7 stars on Google — 100+ reviews">
+      <span class="stars">★★★★★</span>
+      <span class="review-text"><strong>4.7</strong> on Google &nbsp;·&nbsp; 100+ reviews</span>
+    </a>
+
+    <!-- Hours strip -->
+    <div class="hours-strip" role="complementary" aria-label="Business hours">
+      <div class="hours-cell">
+        <span class="hours-cell-label">Tue – Fri</span>
+        <span class="hours-cell-time">10 am – 6 pm</span>
+      </div>
+      <div class="hours-cell">
+        <span class="hours-cell-label">Saturday</span>
+        <span class="hours-cell-time">9 am – 3 pm</span>
+      </div>
+      <div class="hours-closed">Closed Sun &amp; Mon</div>
     </div>
   </header>
 
@@ -518,75 +384,52 @@
     <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="panel-contact"  id="tab-contact"  onclick="switchTab('contact')">Contact</button>
   </nav>
 
-  <!-- ══ BARBERS PANEL ══ -->
+  <!-- ══ BARBERS ══ -->
   <div class="tab-panel active" id="panel-barbers" role="tabpanel" aria-labelledby="tab-barbers">
     <section class="barbers-section">
       <p class="section-label">Meet the Team</p>
-
       <div class="barbers-grid">
-
-        <!-- Sue -->
         <div class="barber-card">
           <p class="barber-name">Sue</p>
           <p class="barber-role">Owner</p>
           <div class="barber-days">
-            <span class="day-pill">Sun</span>
-            <span class="day-pill">Mon</span>
-            <span class="day-pill on">Tue</span>
-            <span class="day-pill on">Wed</span>
-            <span class="day-pill on">Thu</span>
-            <span class="day-pill on">Fri</span>
+            <span class="day-pill">Sun</span><span class="day-pill">Mon</span>
+            <span class="day-pill on">Tue</span><span class="day-pill on">Wed</span>
+            <span class="day-pill on">Thu</span><span class="day-pill on">Fri</span>
             <span class="day-pill">Sat</span>
           </div>
         </div>
-
-        <!-- Krisha -->
         <div class="barber-card">
           <p class="barber-name">Krisha</p>
           <p class="barber-role">Barber &amp; Stylist</p>
           <div class="barber-days">
-            <span class="day-pill">Sun</span>
-            <span class="day-pill">Mon</span>
-            <span class="day-pill on">Tue</span>
-            <span class="day-pill">Wed</span>
-            <span class="day-pill on">Thu</span>
-            <span class="day-pill">Fri</span>
+            <span class="day-pill">Sun</span><span class="day-pill">Mon</span>
+            <span class="day-pill on">Tue</span><span class="day-pill">Wed</span>
+            <span class="day-pill on">Thu</span><span class="day-pill">Fri</span>
             <span class="day-pill">Sat</span>
           </div>
         </div>
-
-        <!-- Alex -->
         <div class="barber-card">
           <p class="barber-name">Alex</p>
           <p class="barber-role">Barber &amp; Stylist</p>
           <div class="barber-days">
-            <span class="day-pill">Sun</span>
-            <span class="day-pill">Mon</span>
-            <span class="day-pill on">Tue</span>
-            <span class="day-pill on">Wed</span>
-            <span class="day-pill on">Thu</span>
-            <span class="day-pill on">Fri</span>
+            <span class="day-pill">Sun</span><span class="day-pill">Mon</span>
+            <span class="day-pill on">Tue</span><span class="day-pill on">Wed</span>
+            <span class="day-pill on">Thu</span><span class="day-pill on">Fri</span>
             <span class="day-pill on">Sat</span>
           </div>
         </div>
-
-        <!-- Dina -->
         <div class="barber-card">
           <p class="barber-name">Dina</p>
           <p class="barber-role">Barber &amp; Stylist</p>
           <div class="barber-days">
-            <span class="day-pill">Sun</span>
-            <span class="day-pill">Mon</span>
-            <span class="day-pill">Tue</span>
-            <span class="day-pill">Wed</span>
+            <span class="day-pill">Sun</span><span class="day-pill">Mon</span>
+            <span class="day-pill">Tue</span><span class="day-pill">Wed</span>
             <span class="day-pill">Thu</span>
-            <span class="day-pill on">Fri</span>
-            <span class="day-pill on">Sat</span>
+            <span class="day-pill on">Fri</span><span class="day-pill on">Sat</span>
           </div>
         </div>
-
-      </div><!-- /barbers-grid -->
-
+      </div>
       <div class="specialties-block">
         <p class="section-label">Specialties</p>
         <p>Clipper cuts, fades, old-fashioned barber styles, shaves, flat tops, layered cuts — and we love cutting kids' hair.</p>
@@ -600,11 +443,10 @@
           <span class="specialty-tag">Kids' Cuts</span>
         </div>
       </div>
-
     </section>
   </div>
 
-  <!-- ══ SERVICES PANEL ══ -->
+  <!-- ══ SERVICES ══ -->
   <div class="tab-panel" id="panel-services" role="tabpanel" aria-labelledby="tab-services">
     <section class="services-section">
       <p class="section-label">Pricing</p>
@@ -637,12 +479,11 @@
     <p class="photo-caption">Cotati Barbershop — a piece of local history</p>
   </div>
 
-  <!-- ══ ABOUT PANEL ══ -->
+  <!-- ══ ABOUT ══ -->
   <div class="tab-panel" id="panel-about" role="tabpanel" aria-labelledby="tab-about">
     <section class="about-section">
       <p class="section-label">Our Story</p>
       <p class="about-lead">A full-service barbershop at the heart of downtown Cotati — where Sonoma County families have trusted us with their hair for over 30 years.</p>
-
       <div class="about-features">
         <div class="about-feature">
           <div class="feature-icon">📍</div>
@@ -669,11 +510,10 @@
           <div class="feature-icon">📅</div>
           <div class="feature-text">
             <h3>Appointments Preferred, Walk-Ins Welcome</h3>
-            <p>Call ahead to reserve your spot — but if you find yourself nearby, come on in and we'll take care of you.</p>
+            <p>Call ahead to reserve your spot — but if you're nearby, come on in and we'll take care of you.</p>
           </div>
         </div>
       </div>
-
       <div class="about-stats">
         <div class="about-stat"><strong>30+</strong><span>Years in Sonoma County</span></div>
         <div class="about-stat"><strong>3</strong><span>Generations of loyal clients</span></div>
@@ -682,15 +522,15 @@
     </section>
   </div>
 
-  <!-- ══ CONTACT PANEL ══ -->
+  <!-- ══ CONTACT ══ -->
   <div class="tab-panel" id="panel-contact" role="tabpanel" aria-labelledby="tab-contact">
     <section class="contact-section">
       <p class="section-label">Find Us</p>
       <p class="contact-name">Cotati Barbershop</p>
-
       <div class="contact-items">
         <p class="contact-item">8099 La Plaza, Suite J &nbsp;·&nbsp; Cotati, CA 94931</p>
         <p class="contact-item"><a href="tel:7077958099">(707) 795-8099</a></p>
+        <p class="contact-item"><a href="mailto:cotatibarbershop@yahoo.com">cotatibarbershop@yahoo.com</a></p>
       </div>
 
       <iframe
@@ -698,36 +538,29 @@
         src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY&q=Cotati+Barbershop,8099+La+Plaza+Suite+J+Cotati+CA"
         width="100%"
         height="280"
-        allowfullscreen
-        loading="lazy"
+        allowfullscreen loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
         title="Cotati Barbershop location map">
       </iframe>
-
-      <p class="section-label" style="margin-bottom: 1rem;">Hours</p>
-      <div class="contact-hours-grid">
-        <div class="contact-hours-cell">
-          <h3>Tuesday – Friday</h3>
-          <p>10:00 am – 6:00 pm</p>
-        </div>
-        <div class="contact-hours-cell">
-          <h3>Saturday</h3>
-          <p>9:00 am – 3:00 pm</p>
-        </div>
-      </div>
-      <p class="contact-hours-note">Closed Sunday &amp; Monday &nbsp;·&nbsp; Appointments preferred — walk-ins welcome based on availability</p>
 
       <a class="cta" href="tel:7077958099">Call to Book &nbsp; (707) 795-8099</a>
     </section>
   </div>
 
   <footer class="footer">
-    © Cotati Barbershop &nbsp;·&nbsp; 8099 La Plaza Suite J, Cotati CA
+    &copy; <span id="yr"></span> Cotati Barbershop &nbsp;·&nbsp; 8099 La Plaza Suite J, Cotati CA
   </footer>
 
 </div><!-- /site -->
 
+<!-- Sticky mobile call button -->
+<a class="mobile-cta" href="tel:7077958099">✆ &nbsp; Call to Book — (707) 795-8099</a>
+
 <script>
+  // Current year in footer
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Tab switching
   function switchTab(name) {
     document.querySelectorAll('.tab-btn').forEach(btn => {
       const active = btn.id === 'tab-' + name;
@@ -737,7 +570,6 @@
     document.querySelectorAll('.tab-panel').forEach(panel => {
       panel.classList.toggle('active', panel.id === 'panel-' + name);
     });
-    // scroll to top of tab content on mobile
     document.querySelector('.tab-nav').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 </script>
