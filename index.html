@@ -72,6 +72,28 @@
     font-size: 11px; letter-spacing: 0.2em;
     text-transform: uppercase; color: var(--brass);
     margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+  .eyebrow a {
+    color: var(--brass);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  .eyebrow a:hover {
+    text-decoration: underline;
+    color: #d4b46a;
+  }
+  .eyebrow .address-link {
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+  .eyebrow .address-link:hover {
+    color: var(--brass);
   }
 
   /* Pole + title lockup */
@@ -95,15 +117,6 @@
   }
   .tagline em { font-style: italic; color: var(--cream); }
 
-  /* ── Phone in hero ── */
-  .hero-phone { margin-bottom: 0.75rem; }
-  .hero-phone a {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.35rem; color: var(--brass);
-    text-decoration: none; letter-spacing: 0.02em;
-  }
-  .hero-phone a:hover { text-decoration: underline; }
-
   /* ── Stars / review badge ── */
   .review-badge {
     display: inline-flex; align-items: center; gap: 0.5rem;
@@ -126,21 +139,22 @@
     border-radius: 2px;
     overflow: hidden;
     background: var(--dark);
+    font-size: 14px;
   }
   .hours-entry {
-    padding: 0.7rem 1.4rem;
+    padding: 0.65rem 1.1rem;
     text-align: center;
     border-right: 1px solid #2e2e2e;
   }
   .hours-entry:last-of-type { border-right: none; }
   .hours-day {
-    font-size: 10px; letter-spacing: 0.18em;
+    font-size: 9.5px; letter-spacing: 0.18em;
     text-transform: uppercase; color: var(--brass);
-    display: block; margin-bottom: 2px;
+    display: block; margin-bottom: 1px;
   }
   .hours-time {
     font-family: 'Playfair Display', serif;
-    font-size: 1rem; color: var(--cream);
+    font-size: 0.95rem; color: var(--cream);
     display: block;
   }
   .hours-divider-v {
@@ -150,9 +164,30 @@
     display: flex;
     align-items: center;
     padding: 0 1rem;
-    font-size: 11px; letter-spacing: 0.1em;
+    font-size: 10.5px; letter-spacing: 0.1em;
     text-transform: uppercase; color: var(--dim);
     border-left: 1px solid #2e2e2e;
+    line-height: 1.2;
+  }
+
+  /* Mobile hours adjustments */
+  @media (max-width: 520px) {
+    .hours-block {
+      font-size: 13px;
+    }
+    .hours-entry {
+      padding: 0.55rem 0.85rem;
+    }
+    .hours-day {
+      font-size: 9px;
+    }
+    .hours-time {
+      font-size: 0.9rem;
+    }
+    .hours-closed-note {
+      padding: 0 0.75rem;
+      font-size: 9.5px;
+    }
   }
 
   /* ── Divider ── */
@@ -325,7 +360,6 @@
     .services-grid { grid-template-columns: 1fr; }
     .about-stats { gap: 1.5rem; }
     .tab-btn { font-size: 10px; padding: 0.85rem 0.35rem; }
-    .hours-cell { min-width: 100px; }
   }
 </style>
 </head>
@@ -347,7 +381,15 @@
       <h1>Cotati<br>Barbershop</h1>
     </div>
     
-    <p class="eyebrow"><a href="tel:7077958099">(707) 795-8099</a> &nbsp;·&nbsp; 8099 La Plaza suite J</p>
+    <p class="eyebrow">
+      <a href="tel:7077958099">(707) 795-8099</a> 
+      <span style="color:#3a3020;">·</span> 
+      <a href="https://www.google.com/maps/place/8099+La+Plaza+Suite+J,+Cotati,+CA+94931" 
+         target="_blank" 
+         rel="noopener" 
+         class="address-link">8099 La Plaza Suite J</a>
+    </p>
+    
     <p class="tagline">A full-service barbershop where Sonoma County's <em>men</em>, <em>women</em>, and <em>children</em> have come for <em>30+ years.</em></p>
 
     <!-- Hours block -->
@@ -363,9 +405,8 @@
       <div class="hours-closed-note">Closed<br>Sun &amp; Mon</div>
     </div>
 
-
     <!-- Google review badge -->
-     <div>
+    <div>
       <a class="review-badge"
          href="https://www.google.com/maps/place/Cotati+Barbershop"
          target="_blank" rel="noopener" aria-label="4.7 stars on Google — 100+ reviews">
@@ -377,14 +418,47 @@
   
   <!-- Tabs -->
   <nav class="tab-nav" role="tablist" aria-label="Site sections">
-    <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="panel-barbers"  id="tab-barbers"  onclick="switchTab('barbers')">Barbers</button>
-    <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="panel-services" id="tab-services" onclick="switchTab('services')">Services</button>
+    <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="panel-services" id="tab-services" onclick="switchTab('services')">Services</button>
+    <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="panel-barbers" id="tab-barbers" onclick="switchTab('barbers')">Barbers</button>
     <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="panel-about"    id="tab-about"    onclick="switchTab('about')">About</button>
     <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="panel-contact"  id="tab-contact"  onclick="switchTab('contact')">Contact</button>
   </nav>
 
+  <!-- ══ SERVICES ══ -->
+  <div class="tab-panel active" id="panel-services" role="tabpanel" aria-labelledby="tab-services">
+    <section class="services-section">
+      <p class="section-label">Pricing</p>
+      <div class="services-grid">
+        <div class="service-item">
+          <div class="service-head"><h3>Haircut</h3><span class="price">$30</span></div>
+          <p>Long hair extra</p>
+        </div>
+        <div class="service-item">
+          <div class="service-head"><h3>Kids 10 &amp; Under</h3><span class="price">$27</span></div>
+        </div>
+        <div class="service-item">
+          <div class="service-head"><h3>Seniors 62+</h3><span class="price">$27</span></div>
+        </div>
+        <div class="service-item">
+          <div class="service-head"><h3>Haircut &amp; Beard Trim</h3><span class="price">$45</span></div>
+        </div>
+        <div class="service-item">
+          <div class="service-head"><h3>Beard Trim</h3><span class="price">$22</span></div>
+        </div>
+        <div class="service-item">
+          <div class="service-head"><h3>Shave</h3><span class="price">$38</span></div>
+        </div>
+      </div>
+    </section>
+    <div class="services-photo">
+      <img src="http://www.cotatibarbers.com/cotatibarbershop_old_time_photo.jpg"
+           alt="Cotati Barbershop — a piece of local history" loading="lazy">
+    </div>
+    <p class="photo-caption">Cotati Barbershop — a piece of local history</p>
+  </div>
+
   <!-- ══ BARBERS ══ -->
-  <div class="tab-panel active" id="panel-barbers" role="tabpanel" aria-labelledby="tab-barbers">
+  <div class="tab-panel" id="panel-barbers" role="tabpanel" aria-labelledby="tab-barbers">
     <section class="barbers-section">
       <p class="section-label">Meet the Team</p>
       <div class="barbers-grid">
@@ -443,39 +517,6 @@
         </div>
       </div>
     </section>
-  </div>
-
-  <!-- ══ SERVICES ══ -->
-  <div class="tab-panel" id="panel-services" role="tabpanel" aria-labelledby="tab-services">
-    <section class="services-section">
-      <p class="section-label">Pricing</p>
-      <div class="services-grid">
-        <div class="service-item">
-          <div class="service-head"><h3>Haircut</h3><span class="price">$30</span></div>
-          <p>Long hair extra</p>
-        </div>
-        <div class="service-item">
-          <div class="service-head"><h3>Kids 10 &amp; Under</h3><span class="price">$27</span></div>
-        </div>
-        <div class="service-item">
-          <div class="service-head"><h3>Seniors 62+</h3><span class="price">$27</span></div>
-        </div>
-        <div class="service-item">
-          <div class="service-head"><h3>Haircut &amp; Beard Trim</h3><span class="price">$45</span></div>
-        </div>
-        <div class="service-item">
-          <div class="service-head"><h3>Beard Trim</h3><span class="price">$22</span></div>
-        </div>
-        <div class="service-item">
-          <div class="service-head"><h3>Shave</h3><span class="price">$38</span></div>
-        </div>
-      </div>
-    </section>
-    <div class="services-photo">
-      <img src="http://www.cotatibarbers.com/cotatibarbershop_old_time_photo.jpg"
-           alt="Cotati Barbershop — a piece of local history" loading="lazy">
-    </div>
-    <p class="photo-caption">Cotati Barbershop — a piece of local history</p>
   </div>
 
   <!-- ══ ABOUT ══ -->
