@@ -1,664 +1,1066 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Cotati Barbershop — Sonoma County's premier full-service barbershop. Serving men, women & children for 30+ years. 8099 La Plaza Suite J, Cotati CA. Call (707) 795-8099.">
-<meta property="og:title" content="Cotati Barbershop">
-<meta property="og:description" content="Sonoma County's premier full-service barbershop. 30+ years serving men, women & children.">
-<meta property="og:type" content="website">
-<title>Cotati Barbershop — Est. 30+ Years</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Cotati Barbershop — Sonoma County's premier full-service barbershop. Serving men, women & children for 30+ years. 8099 La Plaza Suite J, Cotati CA. Call (707) 795-8099.">
+  <meta property="og:title" content="Cotati Barbershop">
+  <meta property="og:description"
+    content="Sonoma County's premier full-service barbershop. 30+ years serving men, women & children.">
+  <meta property="og:type" content="website">
+  <title>Cotati Barbershop — Est. 30+ Years</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500&display=swap"
+    rel="stylesheet">
 
-<!-- Scissors favicon (SVG inline as data URI) -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231C1C1C'/%3E%3Cg stroke='%23B8963E' stroke-width='1.8' stroke-linecap='round' fill='none'%3E%3Ccircle cx='10' cy='22' r='3.5'/%3E%3Ccircle cx='22' cy='22' r='3.5'/%3E%3Cline x1='12.5' y1='19.5' x2='16' y2='10'/%3E%3Cline x1='19.5' y1='19.5' x2='16' y2='10'/%3E%3Cline x1='9' y1='9' x2='23' y2='9'/%3E%3C/g%3E%3C/svg%3E">
+  <!-- Scissors favicon (SVG inline as data URI) -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231C1C1C'/%3E%3Cg stroke='%23B8963E' stroke-width='1.8' stroke-linecap='round' fill='none'%3E%3Ccircle cx='10' cy='22' r='3.5'/%3E%3Ccircle cx='22' cy='22' r='3.5'/%3E%3Cline x1='12.5' y1='19.5' x2='16' y2='10'/%3E%3Cline x1='19.5' y1='19.5' x2='16' y2='10'/%3E%3Cline x1='9' y1='9' x2='23' y2='9'/%3E%3C/g%3E%3C/svg%3E">
 
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  :root {
-    --brass: #B8963E;
-    --charcoal: #1C1C1C;
-    --cream: #F5F0E8;
-    --mid: #2E2E2E;
-    --muted: #a09888;
-    --dim: #6a6055;
-    --dark: #171717;
-  }
+    :root {
+      --brass: #B8963E;
+      --charcoal: #1C1C1C;
+      --cream: #F5F0E8;
+      --mid: #2E2E2E;
+      --muted: #a09888;
+      --dim: #6a6055;
+      --dark: #171717;
+    }
 
-  html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  body {
-    background: var(--charcoal);
-    color: var(--cream);
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    line-height: 1.7;
-    /* room for sticky mobile CTA */
-    padding-bottom: 0;
-  }
+    body {
+      background: var(--charcoal);
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      /* room for sticky mobile CTA */
+      padding-bottom: 0;
+    }
 
-  .site {
-    max-width: 720px;
-    margin: 0 auto;
-  }
+    .site {
+      max-width: 720px;
+      margin: 0 auto;
+    }
 
-  /* ── Pole ── */
-  .pole {
-    width: 18px; height: 80px;
-    border-radius: 9px; overflow: hidden;
-    position: relative; border: 2px solid #555;
-    flex-shrink: 0;
-  }
-  .pole-bg { position: absolute; width: 100%; height: 100%; background: var(--cream); }
-  .pole-stripe {
-    position: absolute; width: 100%; height: 10px;
-    background: var(--brass);
-    animation: spin 4s linear infinite;
-  }
-  .pole-stripe:nth-child(2) { top: -10px; }
-  .pole-stripe:nth-child(3) { top: 12px; }
-  .pole-stripe:nth-child(4) { top: 34px; }
-  .pole-stripe:nth-child(5) { top: 56px; }
-  @keyframes spin { 0% { transform: translateY(0); } 100% { transform: translateY(22px); } }
-  @media (prefers-reduced-motion: reduce) { .pole-stripe { animation: none; } }
+    /* ── Pole ── */
+    .pole {
+      width: 18px;
+      height: 80px;
+      border-radius: 9px;
+      overflow: hidden;
+      position: relative;
+      border: 2px solid #555;
+      flex-shrink: 0;
+    }
 
-  /* ── Hero ── */
-  .hero {
-    text-align: center;
-    padding: 1.75rem 2rem 2rem;
-  }
-.eyebrow {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--brass);
-  margin-bottom: 1.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-}
+    .pole-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: var(--cream);
+    }
 
-@media (max-width: 768px) {
-  .eyebrow {
-    flex-wrap: nowrap;
-    white-space: nowrap;
-    gap: 0.5rem;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-  }
-}
-  .eyebrow a {
-    color: var(--brass);
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.2s;
-  }
-  .eyebrow a:hover {
-    text-decoration: underline;
-    color: #d4b46a;
-  }
-  .eyebrow .address-link {
-    transition: color 0.2s;
-  }
-  .eyebrow .address-link:hover {
-    color: var(--brass);
-  }
+    .pole-stripe {
+      position: absolute;
+      width: 100%;
+      height: 10px;
+      background: var(--brass);
+      animation: spin 4s linear infinite;
+    }
 
-  /* Pole + title lockup */
-  .hero-lockup {
-    display: inline-flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-  .hero-lockup h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 6.5vw, 3.2rem);
-    font-weight: 700; line-height: 1.12;
-    text-align: left;
-  }
-  .hero-lockup h1 em { font-style: italic; color: var(--brass); }
+    .pole-stripe:nth-child(2) {
+      top: -10px;
+    }
 
-  .tagline {
-    color: var(--muted); font-size: 15px;
-    max-width: 400px; margin: 0 auto 1.25rem;
-  }
-  .tagline em { font-style: italic; color: var(--cream); }
+    .pole-stripe:nth-child(3) {
+      top: 12px;
+    }
 
-  /* ── Stars / review badge ── */
-  .review-badge {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: #1f1c14; border: 1px solid #3a3020;
-    border-radius: 2px; padding: 7px 16px;
-    margin-top: 1.5rem; text-decoration: none;
-    transition: border-color 0.15s;
-  }
-  .review-badge:hover { border-color: var(--brass); }
-  .stars { color: var(--brass); font-size: 14px; letter-spacing: 1px; }
-  .review-text { font-size: 13px; color: var(--muted); }
-  .review-text strong { color: var(--cream); }
+    .pole-stripe:nth-child(4) {
+      top: 34px;
+    }
 
-  /* ── Hours block ── */
-  .hours-block {
-    display: inline-flex;
-    align-items: stretch;
-    gap: 0;
-    border: 1px solid #2e2e2e;
-    border-radius: 2px;
-    overflow: hidden;
-    background: var(--dark);
-    font-size: 14px;
-  }
-  .hours-entry {
-    padding: 0.65rem 1.1rem;
-    text-align: center;
-    border-right: 1px solid #2e2e2e;
-  }
-  .hours-entry:last-of-type { border-right: none; }
-  .hours-day {
-    font-size: 9.5px; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--brass);
-    display: block; margin-bottom: 1px;
-  }
-  .hours-time {
-    font-family: 'Playfair Display', serif;
-    font-size: 0.95rem; color: var(--cream);
-    display: block;
-  }
-  .hours-divider-v {
-    width: 1px; background: #2e2e2e; flex-shrink: 0;
-  }
-  .hours-closed-note {
-    display: flex;
-    align-items: center;
-    padding: 0 1rem;
-    font-size: 10.5px; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--dim);
-    border-left: 1px solid #2e2e2e;
-    line-height: 1.2;
-  }
+    .pole-stripe:nth-child(5) {
+      top: 56px;
+    }
 
-  /* Mobile hours adjustments */
-  @media (max-width: 520px) {
-    .hours-block {
+    @keyframes spin {
+      0% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(22px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .pole-stripe {
+        animation: none;
+      }
+    }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 1.75rem 2rem 2rem;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .eyebrow {
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        gap: 0.5rem;
+        font-size: 10px;
+        letter-spacing: 0.1em;
+      }
+    }
+
+    .eyebrow a {
+      color: var(--brass);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .eyebrow a:hover {
+      text-decoration: underline;
+      color: #d4b46a;
+    }
+
+    .eyebrow .address-link {
+      transition: color 0.2s;
+    }
+
+    .eyebrow .address-link:hover {
+      color: var(--brass);
+    }
+
+    /* Pole + title lockup */
+    .hero-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-lockup h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 6.5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.12;
+      text-align: left;
+    }
+
+    .hero-lockup h1 em {
+      font-style: italic;
+      color: var(--brass);
+    }
+
+    .tagline {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 400px;
+      margin: 0 auto 1.25rem;
+    }
+
+    .tagline em {
+      font-style: italic;
+      color: var(--cream);
+    }
+
+    /* ── Stars / review badge ── */
+    .review-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #1f1c14;
+      border: 1px solid #3a3020;
+      border-radius: 2px;
+      padding: 7px 16px;
+      margin-top: 1.5rem;
+      text-decoration: none;
+      transition: border-color 0.15s;
+    }
+
+    .review-badge:hover {
+      border-color: var(--brass);
+    }
+
+    .stars {
+      color: var(--brass);
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    .review-text {
       font-size: 13px;
+      color: var(--muted);
     }
+
+    .review-text strong {
+      color: var(--cream);
+    }
+
+    /* ── Hours block ── */
+    .hours-block {
+      display: inline-flex;
+      align-items: stretch;
+      gap: 0;
+      border: 1px solid #2e2e2e;
+      border-radius: 2px;
+      overflow: hidden;
+      background: var(--dark);
+      font-size: 14px;
+    }
+
     .hours-entry {
-      padding: 0.55rem 0.85rem;
+      padding: 0.65rem 1.1rem;
+      text-align: center;
+      border-right: 1px solid #2e2e2e;
     }
+
+    .hours-entry:last-of-type {
+      border-right: none;
+    }
+
     .hours-day {
-      font-size: 9px;
-    }
-    .hours-time {
-      font-size: 0.9rem;
-    }
-    .hours-closed-note {
-      padding: 0 0.75rem;
       font-size: 9.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brass);
+      display: block;
+      margin-bottom: 1px;
     }
-  }
 
-  /* ── Divider ── */
-  .divider {
-    display: flex; align-items: center;
-    gap: 1rem; padding: 0 2rem; margin: 0.5rem 0;
-  }
-  .divider-line { flex: 1; height: 1px; background: #2e2e2e; }
-  .divider-diamond {
-    width: 6px; height: 6px; background: var(--brass);
-    transform: rotate(45deg); flex-shrink: 0;
-  }
+    .hours-time {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      color: var(--cream);
+      display: block;
+    }
 
-  /* ── Tab Nav ── */
-  .tab-nav {
-    display: flex;
-    border-bottom: 1px solid #2e2e2e;
-    background: var(--dark);
-    position: sticky; top: 0; z-index: 100;
-    overflow-x: auto; scrollbar-width: none;
-  }
-  .tab-nav::-webkit-scrollbar { display: none; }
-  .tab-btn {
-    flex: 1; min-width: 80px;
-    background: none; border: none;
-    border-bottom: 2px solid transparent;
-    color: var(--dim);
-    font-family: 'Inter', sans-serif;
-    font-size: 11px; font-weight: 500;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    padding: 1rem 0.5rem; cursor: pointer;
-    transition: color 0.15s, border-color 0.15s;
-    white-space: nowrap;
-  }
-  .tab-btn:hover { color: var(--muted); }
-  .tab-btn.active { color: var(--brass); border-bottom-color: var(--brass); }
+    .hours-divider-v {
+      width: 1px;
+      background: #2e2e2e;
+      flex-shrink: 0;
+    }
 
-  /* ── Tab Panels ── */
-  .tab-panel { display: none; }
-  .tab-panel.active { display: block; }
+    .hours-closed-note {
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dim);
+      border-left: 1px solid #2e2e2e;
+      line-height: 1.2;
+    }
 
-  /* ── Section Label ── */
-  .section-label {
-    font-size: 11px; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--brass);
-    margin-bottom: 1.25rem;
-    display: block;
-    text-align: left;
-  }
+    /* Mobile hours adjustments */
+    @media (max-width: 520px) {
+      .hours-block {
+        font-size: 13px;
+      }
 
-  /* ══ BARBERS ══ */
-  .barbers-section { padding: 2.5rem 2rem; }
-  .barbers-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 1px; background: #2a2a2a; margin-bottom: 2rem;
-  }
-  .barber-card { background: #222222; padding: 1.4rem 1.25rem; }
-  .barber-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem; font-weight: 700;
-    color: var(--cream); margin-bottom: 0.2rem;
-  }
-  .barber-role {
-    font-size: 11px; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--brass);
-    margin-bottom: 0.75rem;
-  }
-  .barber-days { display: flex; flex-wrap: nowrap; gap: 3px; }
-  .day-pill {
-    font-size: 9px; font-weight: 500;
-    letter-spacing: 0.04em; text-transform: uppercase;
-    color: var(--dim); border: 1px solid #2e2e2e;
-    padding: 3px 5px; border-radius: 2px;
-    flex-shrink: 0;
-  }
-  .day-pill.on { color: var(--cream); border-color: #3a3020; background: #232010; }
+      .hours-entry {
+        padding: 0.55rem 0.85rem;
+      }
 
-  .specialties-block { border-top: 1px solid #2a2a2a; padding-top: 1.5rem; }
-  .specialties-block > p {
-    font-family: 'Playfair Display', serif;
-    font-style: italic; font-size: 1.05rem;
-    color: #c8bfb0; line-height: 1.65; margin-bottom: 1.25rem;
-  }
-  .specialty-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .specialty-tag {
-    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--muted); border: 1px solid #2a2a2a; padding: 5px 12px; border-radius: 2px;
-  }
+      .hours-day {
+        font-size: 9px;
+      }
 
-  /* ══ SERVICES ══ */
-  .services-section { padding: 2.5rem 2rem; background: var(--dark); }
-  .services-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 1px; background: #2a2a2a; margin-bottom: 2rem;
-  }
-  .service-item { background: var(--dark); padding: 1.25rem 1rem; }
-  .service-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
-  .service-item h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400; color: var(--cream); }
-  .service-item p { font-size: 13px; color: var(--dim); margin-top: 2px; }
-  .price { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--brass); font-style: italic; white-space: nowrap; }
-  .services-photo { width: 100%; display: block; border-top: 1px solid #2a2a2a; }
-  .services-photo img { width: 100%; display: block; filter: sepia(20%) contrast(1.05); }
-  .photo-caption {
-    text-align: center; font-size: 12px; color: var(--dim);
-    padding: 0.75rem 1rem; background: var(--dark);
-    border-bottom: 1px solid #2a2a2a; font-style: italic;
-  }
+      .hours-time {
+        font-size: 0.9rem;
+      }
 
-  /* ══ ABOUT ══ */
-  .about-section { padding: 2.5rem 2rem; }
-  .about-lead {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem; font-style: italic;
-    line-height: 1.65; color: #c8bfb0; margin-bottom: 2rem;
-  }
-  .about-features { display: flex; flex-direction: column; gap: 0; margin-bottom: 2rem; border-top: 1px solid #2a2a2a; }
-  .about-feature { display: flex; gap: 1.25rem; align-items: flex-start; padding: 1.25rem 0; border-bottom: 1px solid #2a2a2a; }
-  .feature-icon { width: 32px; height: 32px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-top: 2px; }
-  .feature-text h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--cream); margin-bottom: 0.25rem; }
-  .feature-text p { font-size: 14px; color: var(--muted); line-height: 1.55; }
-  .about-stats { display: flex; gap: 2.5rem; flex-wrap: wrap; padding-top: 1.5rem; border-top: 1px solid #2a2a2a; }
-  .about-stat strong { display: block; font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--brass); line-height: 1; margin-bottom: 0.25rem; }
-  .about-stat span { font-size: 13px; color: var(--dim); }
+      .hours-closed-note {
+        padding: 0 0.75rem;
+        font-size: 9.5px;
+      }
+    }
 
-  /* ══ CONTACT ══ */
-  .contact-section { padding: 2.5rem 2rem 3rem; background: var(--dark); text-align: center; }
-  .contact-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 1.5rem; }
-  .contact-items { display: flex; flex-direction: column; gap: 0.75rem; align-items: center; margin-bottom: 2rem; }
-  .contact-item { font-size: 15px; color: var(--muted); }
-  .contact-item a { color: var(--brass); text-decoration: none; }
-  .contact-item a:hover { text-decoration: underline; }
-  .map-embed { width: 100%; border: 0; display: block; margin-bottom: 2rem; filter: grayscale(30%) contrast(1.05); }
-  .cta {
-    display: inline-block; background: var(--brass); color: var(--charcoal);
-    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 13px 36px; border-radius: 2px; text-decoration: none;
-    transition: opacity 0.15s;
-  }
-  .cta:hover { opacity: 0.88; }
+    /* ── Divider ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0 2rem;
+      margin: 0.5rem 0;
+    }
 
-  .map-container {
-  position: relative;
-  width: 100%;
-  padding-bottom: 75%;           /* 4:3 aspect ratio (good for maps) */
-  height: 0;
-  overflow: hidden;
-  border-radius: 8px;            /* optional: nice rounded corners */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* optional: subtle depth */
-  margin: 1.5rem 0;
-}
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: #2e2e2e;
+    }
 
-.map-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
+    .divider-diamond {
+      width: 6px;
+      height: 6px;
+      background: var(--brass);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
 
-/* Optional: Make it a bit taller on larger screens */
-@media (min-width: 768px) {
-  .map-container {
-    padding-bottom: 65%;         /* slightly wider feel on desktop */
-  }
-}
+    /* ── Tab Nav ── */
+    .tab-nav {
+      display: flex;
+      border-bottom: 1px solid #2e2e2e;
+      background: var(--dark);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
 
-  /* ── Sticky mobile call button ── */
-  .mobile-cta {
-    display: none;
-    position: fixed; bottom: 0; left: 0; right: 0;
-    z-index: 200;
-    background: var(--brass);
-    color: var(--charcoal);
-    font-family: 'Inter', sans-serif;
-    font-size: 13px; font-weight: 500;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    text-align: center; text-decoration: none;
-    padding: 1rem;
-    border-top: 2px solid #8a6e2a;
-  }
-  @media (max-width: 600px) {
-    .mobile-cta { display: block; }
-    body { padding-bottom: 56px; } /* prevent content hiding behind CTA */
-  }
+    .tab-nav::-webkit-scrollbar {
+      display: none;
+    }
 
-  /* ── Footer ── */
-  .footer {
-    padding: 1.5rem 2rem; text-align: center;
-    font-size: 12px; color: #3a3530; border-top: 1px solid #2a2a2a;
-  }
+    .tab-btn {
+      flex: 1;
+      min-width: 80px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--dim);
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 1rem 0.5rem;
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
 
-  /* ── Mobile ── */
-  @media (max-width: 480px) {
-    .barbers-grid { grid-template-columns: 1fr; }
-    .services-grid { grid-template-columns: 1fr; }
-    .about-stats { gap: 1.5rem; }
-    .tab-btn { font-size: 10px; padding: 0.85rem 0.35rem; }
-  }
-</style>
+    .tab-btn:hover {
+      color: var(--muted);
+    }
+
+    .tab-btn.active {
+      color: var(--brass);
+      border-bottom-color: var(--brass);
+    }
+
+    /* ── Tab Panels ── */
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* ── Section Label ── */
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 1.25rem;
+      display: block;
+      text-align: left;
+    }
+
+    /* ══ BARBERS ══ */
+    .barbers-section {
+      padding: 2.5rem 2rem;
+    }
+
+    .barbers-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: #2a2a2a;
+      margin-bottom: 2rem;
+    }
+
+    .barber-card {
+      background: #222222;
+      padding: 1.4rem 1.25rem;
+    }
+
+    .barber-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 0.2rem;
+    }
+
+    .barber-role {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 0.75rem;
+    }
+
+    .barber-days {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 3px;
+    }
+
+    .day-pill {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--dim);
+      border: 1px solid #2e2e2e;
+      padding: 3px 5px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .day-pill.on {
+      color: var(--cream);
+      border-color: #3a3020;
+      background: #232010;
+    }
+
+    .specialties-block {
+      border-top: 1px solid #2a2a2a;
+      padding-top: 1.5rem;
+    }
+
+    .specialties-block>p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: #c8bfb0;
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+
+    .specialty-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .specialty-tag {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid #2a2a2a;
+      padding: 5px 12px;
+      border-radius: 2px;
+    }
+
+    /* ══ SERVICES ══ */
+    .services-section {
+      padding: 2.5rem 2rem;
+      background: var(--dark);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: #2a2a2a;
+      margin-bottom: 2rem;
+    }
+
+    .service-item {
+      background: var(--dark);
+      padding: 1.25rem 1rem;
+    }
+
+    .service-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+    }
+
+    .service-item h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--cream);
+    }
+
+    .service-item p {
+      font-size: 13px;
+      color: var(--dim);
+      margin-top: 2px;
+    }
+
+    .price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--brass);
+      font-style: italic;
+      white-space: nowrap;
+    }
+
+    .services-photo {
+      width: 100%;
+      display: block;
+      border-top: 1px solid #2a2a2a;
+    }
+
+    .services-photo img {
+      width: 100%;
+      display: block;
+      filter: sepia(20%) contrast(1.05);
+    }
+
+    .photo-caption {
+      text-align: center;
+      font-size: 12px;
+      color: var(--dim);
+      padding: 0.75rem 1rem;
+      background: var(--dark);
+      border-bottom: 1px solid #2a2a2a;
+      font-style: italic;
+    }
+
+    /* ══ ABOUT ══ */
+    .about-section {
+      padding: 2.5rem 2rem;
+    }
+
+    .about-lead {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      line-height: 1.65;
+      color: #c8bfb0;
+      margin-bottom: 2rem;
+    }
+
+    .about-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 2rem;
+      border-top: 1px solid #2a2a2a;
+    }
+
+    .about-feature {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .feature-icon {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-top: 2px;
+    }
+
+    .feature-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 0.25rem;
+    }
+
+    .feature-text p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      padding-top: 1.5rem;
+      border-top: 1px solid #2a2a2a;
+    }
+
+    .about-stat strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--brass);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .about-stat span {
+      font-size: 13px;
+      color: var(--dim);
+    }
+
+    /* ══ CONTACT ══ */
+    .contact-section {
+      padding: 2.5rem 2rem 3rem;
+      background: var(--dark);
+      text-align: center;
+    }
+
+    .contact-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .contact-item {
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .contact-item a {
+      color: var(--brass);
+      text-decoration: none;
+    }
+
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+
+    .map-embed {
+      width: 100%;
+      border: 0;
+      display: block;
+      margin-bottom: 2rem;
+      filter: grayscale(30%) contrast(1.05);
+    }
+
+    .cta {
+      display: inline-block;
+      background: var(--brass);
+      color: var(--charcoal);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 13px 36px;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .cta:hover {
+      opacity: 0.88;
+    }
+
+    .map-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 75%;
+      /* 4:3 aspect ratio (good for maps) */
+      height: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      /* optional: nice rounded corners */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      /* optional: subtle depth */
+      margin: 1.5rem 0;
+    }
+
+    .map-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Optional: Make it a bit taller on larger screens */
+    @media (min-width: 768px) {
+      .map-container {
+        padding-bottom: 65%;
+        /* slightly wider feel on desktop */
+      }
+    }
+
+    /* ── Sticky mobile call button ── */
+    .mobile-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: var(--brass);
+      color: var(--charcoal);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+      text-decoration: none;
+      padding: 1rem;
+      border-top: 2px solid #8a6e2a;
+    }
+
+    @media (max-width: 600px) {
+      .mobile-cta {
+        display: block;
+      }
+
+      body {
+        padding-bottom: 56px;
+      }
+
+      /* prevent content hiding behind CTA */
+    }
+
+    /* ── Footer ── */
+    .footer {
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 12px;
+      color: #3a3530;
+      border-top: 1px solid #2a2a2a;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 480px) {
+      .barbers-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-stats {
+        gap: 1.5rem;
+      }
+
+      .tab-btn {
+        font-size: 10px;
+        padding: 0.85rem 0.35rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div class="site">
+  <div class="site">
 
-  <!-- Hero -->
-  <header class="hero">
-    
-    <!-- Pole + title side by side -->
-    <div class="hero-lockup">
-      <div class="pole">
-        <div class="pole-bg"></div>
-        <div class="pole-stripe"></div>
-        <div class="pole-stripe"></div>
-        <div class="pole-stripe"></div>
-        <div class="pole-stripe"></div>
+    <!-- Hero -->
+    <header class="hero">
+
+      <!-- Pole + title side by side -->
+      <div class="hero-lockup">
+        <div class="pole">
+          <div class="pole-bg"></div>
+          <div class="pole-stripe"></div>
+          <div class="pole-stripe"></div>
+          <div class="pole-stripe"></div>
+          <div class="pole-stripe"></div>
+        </div>
+        <h1>Cotati<br>Barbershop</h1>
       </div>
-      <h1>Cotati<br>Barbershop</h1>
+
+      <p class="eyebrow">
+        <a href="tel:7077958099">(707) 795-8099</a>
+        <span class="separator">·</span>
+        <a href="https://www.google.com/maps/place/8099+La+Plaza+Suite+J,+Cotati,+CA+94931" target="_blank"
+          rel="noopener" class="address-link">
+          8099 La Plaza Suite J
+        </a>
+      </p>
+
+      <p class="tagline">A full-service barbershop where Sonoma County's <em>men</em>, <em>women</em>, and
+        <em>children</em> have come for <em>30+ years</em>.</p>
+
+
+      <!-- Hours block -->
+      <div class="hours-block" role="complementary" aria-label="Business hours">
+        <div class="hours-entry">
+          <span class="hours-day">Tue – Fri</span>
+          <span class="hours-time">10 am – 6 pm</span>
+        </div>
+        <div class="hours-entry">
+          <span class="hours-day">Saturday</span>
+          <span class="hours-time">9 am – 3 pm</span>
+        </div>
+        <div class="hours-closed-note">Closed<br>Sun &amp; Mon</div>
+      </div>
+
+      <!-- Google review badge -->
+      <div>
+        <a class="review-badge" href="https://www.google.com/maps/place/Cotati+Barbershop" target="_blank"
+          rel="noopener" aria-label="4.7 stars on Google — 100+ reviews">
+          <span class="stars">★★★★<span style="position:relative;display:inline-block;color:#2e2e2e;">★<span
+                style="position:absolute;left:0;top:0;width:70%;overflow:hidden;color:var(--brass);">★</span></span></span>
+          <span class="review-text"><strong>4.7</strong> on Google &nbsp;·&nbsp; 100+ reviews</span>
+        </a>
+      </div>
+
+    </header>
+
+    <!-- Tabs -->
+    <nav class="tab-nav" role="tablist" aria-label="Site sections">
+      <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-services" id="tab-services"
+        onclick="switchTab('services')">Services</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-barbers" id="tab-barbers"
+        onclick="switchTab('barbers')">Barbers</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-about" id="tab-about"
+        onclick="switchTab('about')">About</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-contact" id="tab-contact"
+        onclick="switchTab('contact')">Contact</button>
+    </nav>
+
+    <!-- ══ SERVICES ══ -->
+    <div class="tab-panel active" id="panel-services" role="tabpanel" aria-labelledby="tab-services">
+      <section class="services-section">
+        <p class="section-label">Pricing</p>
+        <div class="services-grid">
+          <div class="service-item">
+            <div class="service-head">
+              <h3>Haircut</h3><span class="price">$30</span>
+            </div>
+            <p>Long hair extra</p>
+          </div>
+          <div class="service-item">
+            <div class="service-head">
+              <h3>Kids 10 &amp; Under</h3><span class="price">$27</span>
+            </div>
+          </div>
+          <div class="service-item">
+            <div class="service-head">
+              <h3>Seniors 62+</h3><span class="price">$27</span>
+            </div>
+          </div>
+          <div class="service-item">
+            <div class="service-head">
+              <h3>Haircut &amp; Beard Trim</h3><span class="price">$45</span>
+            </div>
+          </div>
+          <div class="service-item">
+            <div class="service-head">
+              <h3>Beard Trim</h3><span class="price">$22</span>
+            </div>
+          </div>
+          <div class="service-item">
+            <div class="service-head">
+              <h3>Shave</h3><span class="price">$38</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="services-photo">
+        <img src="http://www.cotatibarbers.com/cotatibarbershop_old_time_photo.jpg"
+          alt="Cotati Barbershop — a piece of local history" loading="lazy">
+      </div>
+      <p class="photo-caption">Cotati Barbershop — a piece of local history</p>
     </div>
-    
-    <p class="eyebrow">
-      <a href="tel:7077958099">(707) 795-8099</a>
-      <span class="separator">·</span>
-      <a
-        href="https://www.google.com/maps/place/8099+La+Plaza+Suite+J,+Cotati,+CA+94931"
-        target="_blank"
-        rel="noopener"
-        class="address-link"
-      >
-        8099 La Plaza Suite J
-      </a>
-    </p>
-    
-    <p class="tagline">A full-service barbershop where Sonoma County's <em>men</em>, <em>women</em>, and <em>children</em> have come for <em>30+ years</em>.</p>
 
-    
-    <!-- Hours block -->
-    <div class="hours-block" role="complementary" aria-label="Business hours">
-      <div class="hours-entry">
-        <span class="hours-day">Tue – Fri</span>
-        <span class="hours-time">10 am – 6 pm</span>
-      </div>
-      <div class="hours-entry">
-        <span class="hours-day">Saturday</span>
-        <span class="hours-time">9 am – 3 pm</span>
-      </div>
-      <div class="hours-closed-note">Closed<br>Sun &amp; Mon</div>
+    <!-- ══ BARBERS ══ -->
+    <div class="tab-panel" id="panel-barbers" role="tabpanel" aria-labelledby="tab-barbers">
+      <section class="barbers-section">
+        <p class="section-label">Meet the Team</p>
+        <div class="barbers-grid">
+          <div class="barber-card">
+            <p class="barber-name">Sue</p>
+            <p class="barber-role">Owner</p>
+            <div class="barber-days">
+              <span class="day-pill">Sun</span><span class="day-pill">Mon</span>
+              <span class="day-pill on">Tue</span><span class="day-pill on">Wed</span>
+              <span class="day-pill on">Thu</span><span class="day-pill on">Fri</span>
+              <span class="day-pill">Sat</span>
+            </div>
+          </div>
+          <div class="barber-card">
+            <p class="barber-name">Krisha</p>
+            <p class="barber-role">Barber &amp; Stylist</p>
+            <div class="barber-days">
+              <span class="day-pill">Sun</span><span class="day-pill">Mon</span>
+              <span class="day-pill on">Tue</span><span class="day-pill">Wed</span>
+              <span class="day-pill on">Thu</span><span class="day-pill">Fri</span>
+              <span class="day-pill">Sat</span>
+            </div>
+          </div>
+          <div class="barber-card">
+            <p class="barber-name">Alex</p>
+            <p class="barber-role">Barber &amp; Stylist</p>
+            <div class="barber-days">
+              <span class="day-pill">Sun</span><span class="day-pill">Mon</span>
+              <span class="day-pill on">Tue</span><span class="day-pill on">Wed</span>
+              <span class="day-pill on">Thu</span><span class="day-pill on">Fri</span>
+              <span class="day-pill on">Sat</span>
+            </div>
+          </div>
+          <div class="barber-card">
+            <p class="barber-name">Dina</p>
+            <p class="barber-role">Barber &amp; Stylist</p>
+            <div class="barber-days">
+              <span class="day-pill">Sun</span><span class="day-pill">Mon</span>
+              <span class="day-pill">Tue</span><span class="day-pill">Wed</span>
+              <span class="day-pill">Thu</span>
+              <span class="day-pill on">Fri</span><span class="day-pill on">Sat</span>
+            </div>
+          </div>
+        </div>
+        <div class="specialties-block">
+          <p class="section-label">Specialties</p>
+          <p>Clipper cuts, fades, old-fashioned barber styles, shaves, flat tops, layered cuts — and we love cutting
+            kids' hair.</p>
+          <div class="specialty-tags">
+            <span class="specialty-tag">Clipper Cuts</span>
+            <span class="specialty-tag">Fades</span>
+            <span class="specialty-tag">Flat Tops</span>
+            <span class="specialty-tag">Old-Fashioned Styles</span>
+            <span class="specialty-tag">Shaves</span>
+            <span class="specialty-tag">Layered Cuts</span>
+            <span class="specialty-tag">Kids' Cuts</span>
+          </div>
+        </div>
+      </section>
     </div>
 
-        <!-- Google review badge -->
-    <div>
-      <a class="review-badge"
-         href="https://www.google.com/maps/place/Cotati+Barbershop"
-         target="_blank" rel="noopener" aria-label="4.7 stars on Google — 100+ reviews">
-        <span class="stars">★★★★<span style="position:relative;display:inline-block;color:#2e2e2e;">★<span style="position:absolute;left:0;top:0;width:70%;overflow:hidden;color:var(--brass);">★</span></span></span>
-        <span class="review-text"><strong>4.7</strong> on Google &nbsp;·&nbsp; 100+ reviews</span>
-      </a>
+    <!-- ══ ABOUT ══ -->
+    <div class="tab-panel" id="panel-about" role="tabpanel" aria-labelledby="tab-about">
+      <section class="about-section">
+        <p class="section-label">Our Story</p>
+        <p class="about-lead">A full-service barbershop at the heart of downtown Cotati — where Sonoma County families
+          have trusted us with their hair for over 30 years.</p>
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="feature-icon">📍</div>
+            <div class="feature-text">
+              <h3>Right in the Heart of Downtown</h3>
+              <p>Find us on the back side of La Plaza Park — conveniently located in the hub of Cotati.</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="feature-icon">✂️</div>
+            <div class="feature-text">
+              <h3>Licensed Barbers &amp; Stylists</h3>
+              <p>Every member of our staff is a licensed barber or stylist with decades of experience — specializing in
+                all types of clipper cuts.</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="feature-icon">👨‍👩‍👧</div>
+            <div class="feature-text">
+              <h3>A Family-Friendly Shop</h3>
+              <p>We serve men, women, and children of all ages. We specialize in kids' cuts and take pride in making
+                every visit comfortable for the whole family.</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="feature-icon">📅</div>
+            <div class="feature-text">
+              <h3>Appointments Preferred, Walk-Ins Welcome</h3>
+              <p>Call ahead to reserve your spot — but if you're nearby, come on in and we'll take care of you.</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-stats">
+          <div class="about-stat"><strong>30+</strong><span>Years in Sonoma County</span></div>
+          <div class="about-stat"><strong>3</strong><span>Generations of loyal clients</span></div>
+          <div class="about-stat"><strong>4</strong><span>Licensed barbers &amp; stylists</span></div>
+        </div>
+      </section>
     </div>
-    
-  </header>
-  
-  <!-- Tabs -->
-  <nav class="tab-nav" role="tablist" aria-label="Site sections">
-    <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="panel-services" id="tab-services" onclick="switchTab('services')">Services</button>
-    <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="panel-barbers" id="tab-barbers" onclick="switchTab('barbers')">Barbers</button>
-    <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="panel-about"    id="tab-about"    onclick="switchTab('about')">About</button>
-    <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="panel-contact"  id="tab-contact"  onclick="switchTab('contact')">Contact</button>
-  </nav>
 
-  <!-- ══ SERVICES ══ -->
-  <div class="tab-panel active" id="panel-services" role="tabpanel" aria-labelledby="tab-services">
-    <section class="services-section">
-      <p class="section-label">Pricing</p>
-      <div class="services-grid">
-        <div class="service-item">
-          <div class="service-head"><h3>Haircut</h3><span class="price">$30</span></div>
-          <p>Long hair extra</p>
+    <!-- ══ CONTACT ══ -->
+    <div class="tab-panel" id="panel-contact" role="tabpanel" aria-labelledby="tab-contact">
+      <section class="contact-section">
+        <p class="section-label">Find Us</p>
+        <p class="contact-name">Cotati Barbershop</p>
+
+        <div class="contact-items">
+          <p class="contact-item">8099 La Plaza, Suite J &nbsp;·&nbsp; Cotati, CA 94931</p>
+          <p class="contact-item"><a href="tel:7077958099">(707) 795-8099</a></p>
+          <p class="contact-item"><a href="mailto:cotatibarbershop@yahoo.com">cotatibarbershop@yahoo.com</a></p>
         </div>
-        <div class="service-item">
-          <div class="service-head"><h3>Kids 10 &amp; Under</h3><span class="price">$27</span></div>
+
+        <!-- Responsive Google Maps Container -->
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3129.9416467754104!2d-122.7077247!3d38.3271821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80844a87f1cafae5%3A0xf5e77965a36f4854!2sCotati%20Barbershop!5e0!3m2!1sen!2sus!4v1782689345715!5m2!1sen!2sus"
+            style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
+          </iframe>
         </div>
-        <div class="service-item">
-          <div class="service-head"><h3>Seniors 62+</h3><span class="price">$27</span></div>
-        </div>
-        <div class="service-item">
-          <div class="service-head"><h3>Haircut &amp; Beard Trim</h3><span class="price">$45</span></div>
-        </div>
-        <div class="service-item">
-          <div class="service-head"><h3>Beard Trim</h3><span class="price">$22</span></div>
-        </div>
-        <div class="service-item">
-          <div class="service-head"><h3>Shave</h3><span class="price">$38</span></div>
-        </div>
-      </div>
-    </section>
-    <div class="services-photo">
-      <img src="http://www.cotatibarbers.com/cotatibarbershop_old_time_photo.jpg"
-           alt="Cotati Barbershop — a piece of local history" loading="lazy">
+
+        <a class="cta" href="tel:7077958099">Call to Book &nbsp; (707) 795-8099</a>
+      </section>
     </div>
-    <p class="photo-caption">Cotati Barbershop — a piece of local history</p>
-  </div>
 
-  <!-- ══ BARBERS ══ -->
-  <div class="tab-panel" id="panel-barbers" role="tabpanel" aria-labelledby="tab-barbers">
-    <section class="barbers-section">
-      <p class="section-label">Meet the Team</p>
-      <div class="barbers-grid">
-        <div class="barber-card">
-          <p class="barber-name">Sue</p>
-          <p class="barber-role">Owner</p>
-          <div class="barber-days">
-            <span class="day-pill">Sun</span><span class="day-pill">Mon</span>
-            <span class="day-pill on">Tue</span><span class="day-pill on">Wed</span>
-            <span class="day-pill on">Thu</span><span class="day-pill on">Fri</span>
-            <span class="day-pill">Sat</span>
-          </div>
-        </div>
-        <div class="barber-card">
-          <p class="barber-name">Krisha</p>
-          <p class="barber-role">Barber &amp; Stylist</p>
-          <div class="barber-days">
-            <span class="day-pill">Sun</span><span class="day-pill">Mon</span>
-            <span class="day-pill on">Tue</span><span class="day-pill">Wed</span>
-            <span class="day-pill on">Thu</span><span class="day-pill">Fri</span>
-            <span class="day-pill">Sat</span>
-          </div>
-        </div>
-        <div class="barber-card">
-          <p class="barber-name">Alex</p>
-          <p class="barber-role">Barber &amp; Stylist</p>
-          <div class="barber-days">
-            <span class="day-pill">Sun</span><span class="day-pill">Mon</span>
-            <span class="day-pill on">Tue</span><span class="day-pill on">Wed</span>
-            <span class="day-pill on">Thu</span><span class="day-pill on">Fri</span>
-            <span class="day-pill on">Sat</span>
-          </div>
-        </div>
-        <div class="barber-card">
-          <p class="barber-name">Dina</p>
-          <p class="barber-role">Barber &amp; Stylist</p>
-          <div class="barber-days">
-            <span class="day-pill">Sun</span><span class="day-pill">Mon</span>
-            <span class="day-pill">Tue</span><span class="day-pill">Wed</span>
-            <span class="day-pill">Thu</span>
-            <span class="day-pill on">Fri</span><span class="day-pill on">Sat</span>
-          </div>
-        </div>
-      </div>
-      <div class="specialties-block">
-        <p class="section-label">Specialties</p>
-        <p>Clipper cuts, fades, old-fashioned barber styles, shaves, flat tops, layered cuts — and we love cutting kids' hair.</p>
-        <div class="specialty-tags">
-          <span class="specialty-tag">Clipper Cuts</span>
-          <span class="specialty-tag">Fades</span>
-          <span class="specialty-tag">Flat Tops</span>
-          <span class="specialty-tag">Old-Fashioned Styles</span>
-          <span class="specialty-tag">Shaves</span>
-          <span class="specialty-tag">Layered Cuts</span>
-          <span class="specialty-tag">Kids' Cuts</span>
-        </div>
-      </div>
-    </section>
-  </div>
+    <footer class="footer">
+      &copy; <span id="yr"></span> Cotati Barbershop &nbsp;·&nbsp; 8099 La Plaza Suite J, Cotati CA
+    </footer>
 
-  <!-- ══ ABOUT ══ -->
-  <div class="tab-panel" id="panel-about" role="tabpanel" aria-labelledby="tab-about">
-    <section class="about-section">
-      <p class="section-label">Our Story</p>
-      <p class="about-lead">A full-service barbershop at the heart of downtown Cotati — where Sonoma County families have trusted us with their hair for over 30 years.</p>
-      <div class="about-features">
-        <div class="about-feature">
-          <div class="feature-icon">📍</div>
-          <div class="feature-text">
-            <h3>Right in the Heart of Downtown</h3>
-            <p>Find us on the back side of La Plaza Park — conveniently located in the hub of Cotati.</p>
-          </div>
-        </div>
-        <div class="about-feature">
-          <div class="feature-icon">✂️</div>
-          <div class="feature-text">
-            <h3>Licensed Barbers &amp; Stylists</h3>
-            <p>Every member of our staff is a licensed barber or stylist with decades of experience — specializing in all types of clipper cuts.</p>
-          </div>
-        </div>
-        <div class="about-feature">
-          <div class="feature-icon">👨‍👩‍👧</div>
-          <div class="feature-text">
-            <h3>A Family-Friendly Shop</h3>
-            <p>We serve men, women, and children of all ages. We specialize in kids' cuts and take pride in making every visit comfortable for the whole family.</p>
-          </div>
-        </div>
-        <div class="about-feature">
-          <div class="feature-icon">📅</div>
-          <div class="feature-text">
-            <h3>Appointments Preferred, Walk-Ins Welcome</h3>
-            <p>Call ahead to reserve your spot — but if you're nearby, come on in and we'll take care of you.</p>
-          </div>
-        </div>
-      </div>
-      <div class="about-stats">
-        <div class="about-stat"><strong>30+</strong><span>Years in Sonoma County</span></div>
-        <div class="about-stat"><strong>3</strong><span>Generations of loyal clients</span></div>
-        <div class="about-stat"><strong>4</strong><span>Licensed barbers &amp; stylists</span></div>
-      </div>
-    </section>
-  </div>
+  </div><!-- /site -->
 
-  <!-- ══ CONTACT ══ -->
-  <div class="tab-panel" id="panel-contact" role="tabpanel" aria-labelledby="tab-contact">
-    <section class="contact-section">
-      <p class="section-label">Find Us</p>
-      <p class="contact-name">Cotati Barbershop</p>
-      
-      <div class="contact-items">
-        <p class="contact-item">8099 La Plaza, Suite J &nbsp;·&nbsp; Cotati, CA 94931</p>
-        <p class="contact-item"><a href="tel:7077958099">(707) 795-8099</a></p>
-        <p class="contact-item"><a href="mailto:cotatibarbershop@yahoo.com">cotatibarbershop@yahoo.com</a></p>
-      </div>
+  <!-- Sticky mobile call button -->
+  <a class="mobile-cta" href="tel:7077958099">✆ &nbsp; Call to Book — (707) 795-8099</a>
 
-      <!-- Responsive Google Maps Container -->
-      <div class="map-container">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3129.9416467754104!2d-122.7077247!3d38.3271821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80844a87f1cafae5%3A0xf5e77965a36f4854!2sCotati%20Barbershop!5e0!3m2!1sen!2sus!4v1782689345715!5m2!1sen!2sus"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="strict-origin-when-cross-origin">
-        </iframe>
-      </div>
+  <script>
+    // Current year in footer
+    document.getElementById('yr').textContent = new Date().getFullYear();
 
-      <a class="cta" href="tel:7077958099">Call to Book &nbsp; (707) 795-8099</a>
-    </section>
-  </div>
-
-  <footer class="footer">
-    &copy; <span id="yr"></span> Cotati Barbershop &nbsp;·&nbsp; 8099 La Plaza Suite J, Cotati CA
-  </footer>
-
-</div><!-- /site -->
-
-<!-- Sticky mobile call button -->
-<a class="mobile-cta" href="tel:7077958099">✆ &nbsp; Call to Book — (707) 795-8099</a>
-
-<script>
-  // Current year in footer
-  document.getElementById('yr').textContent = new Date().getFullYear();
-
-  // Tab switching
-  function switchTab(name) {
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      const active = btn.id === 'tab-' + name;
-      btn.classList.toggle('active', active);
-      btn.setAttribute('aria-selected', active);
-    });
-    document.querySelectorAll('.tab-panel').forEach(panel => {
-      panel.classList.toggle('active', panel.id === 'panel-' + name);
-    });
-    document.querySelector('.tab-nav').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }
-</script>
+    // Tab switching
+    function switchTab(name) {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        const active = btn.id === 'tab-' + name;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-selected', active);
+      });
+      document.querySelectorAll('.tab-panel').forEach(panel => {
+        panel.classList.toggle('active', panel.id === 'panel-' + name);
+      });
+      document.querySelector('.tab-nav').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
 
 </body>
+
 </html>
