@@ -44,75 +44,72 @@
   }
 
   /* ── Pole ── */
-  .pole-wrap {
-    display: flex;
-    justify-content: center;
-    padding: 1.5rem 0 0.5rem;
-  }
   .pole {
-    width: 22px; height: 90px;
-    border-radius: 11px; overflow: hidden;
+    width: 18px; height: 80px;
+    border-radius: 9px; overflow: hidden;
     position: relative; border: 2px solid #555;
+    flex-shrink: 0;
   }
   .pole-bg { position: absolute; width: 100%; height: 100%; background: var(--cream); }
   .pole-stripe {
-    position: absolute; width: 100%; height: 12px;
+    position: absolute; width: 100%; height: 10px;
     background: var(--brass);
     animation: spin 4s linear infinite;
   }
-  .pole-stripe:nth-child(2) { top: -12px; }
-  .pole-stripe:nth-child(3) { top: 14px; }
-  .pole-stripe:nth-child(4) { top: 40px; }
-  .pole-stripe:nth-child(5) { top: 66px; }
-  @keyframes spin { 0% { transform: translateY(0); } 100% { transform: translateY(26px); } }
+  .pole-stripe:nth-child(2) { top: -10px; }
+  .pole-stripe:nth-child(3) { top: 12px; }
+  .pole-stripe:nth-child(4) { top: 34px; }
+  .pole-stripe:nth-child(5) { top: 56px; }
+  @keyframes spin { 0% { transform: translateY(0); } 100% { transform: translateY(22px); } }
   @media (prefers-reduced-motion: reduce) { .pole-stripe { animation: none; } }
 
   /* ── Hero ── */
   .hero {
     text-align: center;
-    padding: 1.5rem 2rem 2.5rem;
+    padding: 1.75rem 2rem 2rem;
   }
   .eyebrow {
     font-size: 11px; letter-spacing: 0.2em;
     text-transform: uppercase; color: var(--brass);
-    margin-bottom: 1rem;
-  }
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.2rem, 7vw, 3.6rem);
-    font-weight: 700; line-height: 1.15;
-    margin-bottom: 0.75rem;
-  }
-  .hero h1 em { font-style: italic; color: var(--brass); }
-  .tagline {
-    color: var(--muted); font-size: 15px;
-    max-width: 400px; margin: 0 auto 1.5rem;
+    margin-bottom: 1.25rem;
   }
 
-  /* ── Phone in hero ── */
-  .hero-phone {
-    margin-bottom: 0.75rem;
+  /* Pole + title lockup */
+  .hero-lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
   }
+  .hero-lockup h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 6.5vw, 3.2rem);
+    font-weight: 700; line-height: 1.12;
+    text-align: left;
+  }
+  .hero-lockup h1 em { font-style: italic; color: var(--brass); }
+
+  .tagline {
+    color: var(--muted); font-size: 15px;
+    max-width: 400px; margin: 0 auto 1.25rem;
+  }
+  .tagline em { font-style: italic; color: var(--cream); }
+
+  /* ── Phone in hero ── */
+  .hero-phone { margin-bottom: 0.75rem; }
   .hero-phone a {
     font-family: 'Playfair Display', serif;
-    font-size: 1.35rem;
-    color: var(--brass);
-    text-decoration: none;
-    letter-spacing: 0.02em;
+    font-size: 1.35rem; color: var(--brass);
+    text-decoration: none; letter-spacing: 0.02em;
   }
   .hero-phone a:hover { text-decoration: underline; }
 
   /* ── Stars / review badge ── */
   .review-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: #1f1c14;
-    border: 1px solid #3a3020;
-    border-radius: 2px;
-    padding: 7px 16px;
-    margin-bottom: 1.5rem;
-    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: #1f1c14; border: 1px solid #3a3020;
+    border-radius: 2px; padding: 7px 16px;
+    margin-bottom: 1.5rem; text-decoration: none;
     transition: border-color 0.15s;
   }
   .review-badge:hover { border-color: var(--brass); }
@@ -120,42 +117,42 @@
   .review-text { font-size: 13px; color: var(--muted); }
   .review-text strong { color: var(--cream); }
 
-  /* ── Hours strip (replaces badges) ── */
-  .hours-strip {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+  /* ── Hours block ── */
+  .hours-block {
+    display: inline-flex;
+    align-items: stretch;
     gap: 0;
     border: 1px solid #2e2e2e;
     border-radius: 2px;
     overflow: hidden;
-    max-width: 440px;
-    margin: 0 auto;
+    background: var(--dark);
   }
-  .hours-cell {
-    flex: 1;
-    min-width: 130px;
-    padding: 0.6rem 1rem;
-    border-right: 1px solid #2e2e2e;
-    text-align: left;
-  }
-  .hours-cell:last-child { border-right: none; }
-  .hours-cell-label {
-    font-size: 10px; letter-spacing: 0.15em;
-    text-transform: uppercase; color: var(--brass);
-    display: block; margin-bottom: 1px;
-  }
-  .hours-cell-time {
-    font-size: 13px; color: var(--muted);
-  }
-  .hours-closed {
-    flex-basis: 100%;
-    padding: 0.45rem 1rem;
-    font-size: 11px;
-    color: var(--dim);
-    border-top: 1px solid #2e2e2e;
+  .hours-entry {
+    padding: 0.7rem 1.4rem;
     text-align: center;
-    letter-spacing: 0.05em;
+    border-right: 1px solid #2e2e2e;
+  }
+  .hours-entry:last-of-type { border-right: none; }
+  .hours-day {
+    font-size: 10px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--brass);
+    display: block; margin-bottom: 2px;
+  }
+  .hours-time {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; color: var(--cream);
+    display: block;
+  }
+  .hours-divider-v {
+    width: 1px; background: #2e2e2e; flex-shrink: 0;
+  }
+  .hours-closed-note {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--dim);
+    border-left: 1px solid #2e2e2e;
   }
 
   /* ── Divider ── */
@@ -335,50 +332,49 @@
 <body>
 <div class="site">
 
-  <!-- Pole -->
-  <div class="pole-wrap">
-    <div class="pole">
-      <div class="pole-bg"></div>
-      <div class="pole-stripe"></div>
-      <div class="pole-stripe"></div>
-      <div class="pole-stripe"></div>
-      <div class="pole-stripe"></div>
-    </div>
-  </div>
-
   <!-- Hero -->
   <header class="hero">
-    <p class="eyebrow">Est. 30+ Years &nbsp;·&nbsp; Cotati, California</p>
-    <h1>Cotati's<br><em>Finest</em><br>Barbershop</h1>
-    <p class="tagline">A full-service barbershop where Sonoma County's men, women, and children have come for generations.</p>
-
-    <!-- Phone -->
-    <div class="hero-phone">
-      <a href="tel:7077958099">(707) 795-8099</a>
+    
+    <!-- Pole + title side by side -->
+    <div class="hero-lockup">
+      <div class="pole">
+        <div class="pole-bg"></div>
+        <div class="pole-stripe"></div>
+        <div class="pole-stripe"></div>
+        <div class="pole-stripe"></div>
+        <div class="pole-stripe"></div>
+      </div>
+      <h1>Cotati<br>Barbershop</h1>
     </div>
+    
+    <p class="eyebrow"><a href="tel:7077958099">(707) 795-8099</a> &nbsp;·&nbsp; 8099 La Plaza suite J</p>
+    <p class="tagline">A full-service barbershop where Sonoma County's <em>men</em>, <em>women</em>, and <em>children</em> have come for <em>30+ years.</em></p>
+
+    <!-- Hours block -->
+    <div class="hours-block" role="complementary" aria-label="Business hours">
+      <div class="hours-entry">
+        <span class="hours-day">Tue – Fri</span>
+        <span class="hours-time">10 am – 6 pm</span>
+      </div>
+      <div class="hours-entry">
+        <span class="hours-day">Saturday</span>
+        <span class="hours-time">9 am – 3 pm</span>
+      </div>
+      <div class="hours-closed-note">Closed<br>Sun &amp; Mon</div>
+    </div>
+
 
     <!-- Google review badge -->
-    <a class="review-badge"
-       href="https://www.google.com/search?sca_esv=3e92695485d180ae&si=APenkKn5T4YN59srr511wD6k6Pufj9DEzRUvB1XJSwUeeT5afuQkIL68-yN11JdyDZuQx6LJ9UA44d0Bwazuj6r8g4FoHYBY_mbIn6PJAW9bdiQc1n6pLStOkKF4548ubB-UnaS1IaVm&q=Cotati+Barbershop+Reviews&sa=X&ved=2ahUKEwjflJfi_6qVAxUXOzQIHfzpBP4Q0bkNegQIQBAH&biw=1313&bih=1126&dpr=0.9"
-       target="_blank" rel="noopener" aria-label="4.7 stars on Google — 100+ reviews">
-      <span class="stars">★★★★<span style="position:relative;display:inline-block;color:#2e2e2e;">★<span style="position:absolute;left:0;top:0;width:70%;overflow:hidden;color:var(--brass);">★</span></span></span>
-      <span class="review-text"><strong>4.7</strong> on Google &nbsp;·&nbsp; 100+ reviews</span>
-    </a>
-
-    <!-- Hours strip -->
-    <div class="hours-strip" role="complementary" aria-label="Business hours">
-      <div class="hours-cell">
-        <span class="hours-cell-label">Tue – Fri</span>
-        <span class="hours-cell-time">10 am – 6 pm</span>
-      </div>
-      <div class="hours-cell">
-        <span class="hours-cell-label">Saturday</span>
-        <span class="hours-cell-time">9 am – 3 pm</span>
-      </div>
-      <div class="hours-closed">Closed Sun &amp; Mon</div>
+     <div>
+      <a class="review-badge"
+         href="https://www.google.com/maps/place/Cotati+Barbershop"
+         target="_blank" rel="noopener" aria-label="4.7 stars on Google — 100+ reviews">
+        <span class="stars">★★★★<span style="position:relative;display:inline-block;color:#2e2e2e;">★<span style="position:absolute;left:0;top:0;width:70%;overflow:hidden;color:var(--brass);">★</span></span></span>
+        <span class="review-text"><strong>4.7</strong> on Google &nbsp;·&nbsp; 100+ reviews</span>
+      </a>
     </div>
   </header>
-
+  
   <!-- Tabs -->
   <nav class="tab-nav" role="tablist" aria-label="Site sections">
     <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="panel-barbers"  id="tab-barbers"  onclick="switchTab('barbers')">Barbers</button>
