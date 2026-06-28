@@ -68,16 +68,28 @@
     text-align: center;
     padding: 1.75rem 2rem 2rem;
   }
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
   .eyebrow {
-    font-size: 11px; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--brass);
-    margin-bottom: 1.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.25rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    gap: 0.5rem;
+    font-size: 10px;
+    letter-spacing: 0.1em;
   }
+}
   .eyebrow a {
     color: var(--brass);
     text-decoration: none;
@@ -381,15 +393,19 @@
     </div>
     
     <p class="eyebrow">
-      <a href="tel:7077958099">(707) 795-8099</a> 
-      <span class="separator" style="color:#3a3020;">·</span> 
-      <a href="https://www.google.com/maps/place/8099+La+Plaza+Suite+J,+Cotati,+CA+94931" 
-         target="_blank" 
-         rel="noopener" 
-         class="address-link">8099 La Plaza Suite J</a>
+      <a href="tel:7077958099">(707) 795-8099</a>
+      <span class="separator">·</span>
+      <a
+        href="https://www.google.com/maps/place/8099+La+Plaza+Suite+J,+Cotati,+CA+94931"
+        target="_blank"
+        rel="noopener"
+        class="address-link"
+      >
+        8099 La Plaza Suite J
+      </a>
     </p>
     
-    <p class="tagline">A full-service barbershop where Sonoma County's <em>men</em>, <em>women</em>, and <em>children</em> have come for <em>30+ years.</em></p>
+    <p class="tagline">A full-service barbershop where Sonoma County's <em>men</em>, <em>women</em>, and <em>children</em> have come for <em>30+ years</em>.</p>
 
     <!-- Google review badge -->
     <div>
